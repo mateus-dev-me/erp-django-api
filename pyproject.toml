@@ -1,0 +1,79 @@
+[tool.poetry]
+name = "erp-django-api"
+version = "0.1.0"
+description = "ERP API with Python and Django"
+authors = ["mateus-dev-me <mateusmartinsipu2@gmail.com>"]
+license = "MIT"
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.11"
+djangorestframework-simplejwt = "^5.4.0"
+djangorestframework = "^3.15.2"
+markdown = "^3.7"
+django-filter = "^24.3"
+django = "4.2"
+django-cors-headers = "^4.6.0"
+python-dotenv = "^1.0.1"
+gunicorn = "^23.0.0"
+psycopg2-binary = "^2.9.10"
+
+
+[tool.poetry.group.test.dependencies]
+pytest = "^8.3.4"
+pytest-cov = "^6.0.0"
+pytest-django = "^4.9.0"
+faker = "^35.0.0"
+factory-boy = "^3.3.1"
+
+
+[tool.poetry.group.dev.dependencies]
+ipython = "^8.31.0"
+django-extensions = "^3.2.3"
+ruff = "^0.9.3"
+pre-commit = "^4.1.0"
+
+
+[tool.pytest.ini_options]
+DJANGO_SETTINGS_MODULE = "core.settings.dev"
+pythonpath = "."
+python_files = ["test_*.py", "*_test.py"]
+addopts = ["-p no:warning", "--cov=."]
+
+[tool.coverage.run]
+omit = [
+    "__init__.py",
+    "manage.py",
+    "urls.py",
+    "apps.py",
+    "**/core/*",
+    "**/migrations/*",
+    "conftest.py",
+    "**/_tests/*",
+]
+
+[tool.ruff]
+extend-exclude = [
+  ".venv",
+  "data",
+  "migrations",
+  "core",
+  "manage.py",
+  ".ruff_cache",
+  "_tests",
+]
+line-length = 79
+indent-width = 4
+
+[tool.ruff.lint]
+preview = true
+select = ['I', 'F', 'E', 'W', 'PL', 'PT']
+
+[tool.ruff.format]
+preview = true
+quote-style = 'single'
+docstring-code-format = true
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
