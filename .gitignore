@@ -177,3 +177,4 @@ cython_debug/
 
 mysql_data
 .ruff_cache
+data/
