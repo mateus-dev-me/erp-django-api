@@ -4,6 +4,11 @@ repos:
   hooks:
     - id: ruff
       name: ruff lint
-      args: [ --fix ]
+      args: 
+        - --fix
+        - --extend-ignore
+        - PLR0913
+        - PLR0917
     - id: ruff-format
       name: ruff format
+
