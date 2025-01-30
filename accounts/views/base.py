@@ -203,4 +203,3 @@ class Base(APIView):
             enterprise_id=company_id,
             user_id=user_id,
         )
-
