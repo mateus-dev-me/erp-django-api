@@ -1,44 +1,43 @@
-[tool.poetry]
-package-mode = false
+[project]
 name = "erp-django-api"
 version = "0.1.0"
 description = "ERP API with Python and Django"
-authors = ["mateus-dev-me <mateusmartinsipu2@gmail.com>"]
-license = "MIT"
+authors = [
+    {name = "mateus-dev-me",email = "mateusmartinsipu2@gmail.com"}
+]
+license = {text = "MIT"}
 readme = "README.md"
+requires-python = ">=3.11"
+dependencies = [
+    "django (==4.2)",
+    "djangorestframework (>=3.15.2,<4.0.0)",
+    "markdown (>=3.7,<4.0)",
+    "django-filter (>=24.3,<25.0)",
+    "django-cors-headers (>=4.6.0,<5.0.0)",
+    "python-dotenv (>=1.0.1,<2.0.0)",
+    "psycopg2-binary (>=2.9.10,<3.0.0)",
+    "djangorestframework-simplejwt (>=5.4.0,<6.0.0)"
+]
 
 
-[tool.poetry.dependencies]
-python = "^3.11"
-djangorestframework-simplejwt = "^5.4.0"
-djangorestframework = "^3.15.2"
-markdown = "^3.7"
-django-filter = "^24.3"
-django = "4.2"
-django-cors-headers = "^4.6.0"
-python-dotenv = "^1.0.1"
-gunicorn = "^23.0.0"
-psycopg2-binary = "^2.9.10"
+[build-system]
+requires = ["poetry-core>=2.0.0,<3.0.0"]
+build-backend = "poetry.core.masonry.api"
 
 
-[tool.poetry.group.test.dependencies]
-pytest = "^8.3.4"
-pytest-cov = "^6.0.0"
-pytest-django = "^4.9.0"
-faker = "^35.0.0"
-factory-boy = "^3.3.1"
+[tool.poetry]
+package-mode = false
 
 
 [tool.poetry.group.dev.dependencies]
-ipython = "^8.31.0"
 django-extensions = "^3.2.3"
-ruff = "^0.9.3"
-pre-commit = "^4.1.0"
+ruff = "^0.9.4"
 ipdb = "^0.13.13"
+pre-commit = "^4.1.0"
 
 
 [tool.pytest.ini_options]
-DJANGO_SETTINGS_MODULE = "core.settings.dev"
+DJANGO_SETTINGS_MODULE = "config.settings.dev"
 pythonpath = "."
 python_files = ["test_*.py", "*_test.py"]
 addopts = ["-p no:warning", "--cov=."]
@@ -50,7 +49,7 @@ omit = [
     "manage.py",
     "urls.py",
     "apps.py",
-    "**/core/*",
+    "**/config/*",
     "**/migrations/*",
     "conftest.py",
     "**/tests/*",
@@ -62,7 +61,7 @@ extend-exclude = [
   ".venv",
   "data",
   "migrations",
-  "core",
+  "config",
   "manage.py",
   ".ruff_cache",
   "tests",
@@ -82,6 +81,9 @@ preview = true
 quote-style = 'single'
 
 
-[build-system]
-requires = ["poetry-core"]
-build-backend = "poetry.core.masonry.api"
+[tool.poetry.group.test.dependencies]
+pytest = "^8.3.4"
+pytest-cov = "^6.0.0"
+pytest-django = "^4.9.0"
+faker = "^35.2.0"
+factory-boy = "^3.3.1"
