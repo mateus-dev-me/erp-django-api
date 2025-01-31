@@ -54,6 +54,11 @@ test: lint        ## Run tests and generate coverage report.
 	$(ENV_PREFIX)coverage html
 
 
+.PHONY: resetdb
+resetdb:
+	$(ENV_PREFIX)python manage.py reset_db --noinput
+
+
 .PHONY: clean
 clean:            ## Clean unused files.
 	@find . -name '*.pyc' -exec rm -rf {} \;
