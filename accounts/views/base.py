@@ -14,7 +14,7 @@ from accounts.exceptions import (
 )
 from accounts.models import GroupPermissions, User, UserGroups
 from companies.models import Employee, Enterprise
-from core.utils.exceptions import MissingFieldException
+from core.exceptions import MissingFieldException
 
 
 class Base(APIView):

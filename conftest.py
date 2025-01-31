@@ -6,7 +6,7 @@ from django.test.client import Client as DjangoClient
 from django.utils.http import urlencode
 
 from accounts.models import User
-from core.utils.factories import EnterpriseFactory, UserFactory
+from core.tests.factories import EnterpriseFactory, UserFactory
 
 
 class Client(DjangoClient):

@@ -1,9 +1,9 @@
 from django.db import models
 
-from core.utils.models import BaseModel
+from core.abstracts.models import CreatedModifiedAbstract
 
 
-class Enterprise(BaseModel):
+class Enterprise(CreatedModifiedAbstract):
     company_name = models.CharField(max_length=150, default='', unique=True)
     document = models.CharField(max_length=14, default='', unique=True)
     user = models.ForeignKey('accounts.User', on_delete=models.CASCADE)
@@ -15,7 +15,7 @@ class Enterprise(BaseModel):
         app_label = 'companies'
 
 
-class Employee(BaseModel):
+class Employee(CreatedModifiedAbstract):
     user = models.ForeignKey('accounts.User', on_delete=models.CASCADE)
     enterprise = models.ForeignKey(Enterprise, on_delete=models.CASCADE)
 
@@ -38,7 +38,7 @@ class TaskStatus(models.Model):
         db_table = 'companies_task_status'
 
 
-class Task(BaseModel):
+class Task(CreatedModifiedAbstract):
     title = models.TextField()
     description = models.TextField(null=True)
     due_date = models.DateTimeField(null=True)

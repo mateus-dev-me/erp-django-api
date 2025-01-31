@@ -2,10 +2,10 @@ from django.contrib.auth.models import AbstractBaseUser, Permission
 from django.db import models
 
 from companies.models import Enterprise
-from core.utils.models import BaseModel
+from core.abstracts.models import CreatedModifiedAbstract
 
 
-class User(AbstractBaseUser, BaseModel):
+class User(AbstractBaseUser, CreatedModifiedAbstract):
     name = models.CharField(max_length=150)
     email = models.EmailField(unique=True)
     is_owner = models.BooleanField(default=True)

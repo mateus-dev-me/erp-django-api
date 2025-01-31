@@ -2,7 +2,7 @@ import pytest
 
 from accounts.serializers import UserSerializer
 
-from core.utils.factories import UserFactory
+from core.tests.factories import UserFactory
 
 
 @pytest.mark.django_db
