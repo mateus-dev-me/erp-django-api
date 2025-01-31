@@ -17,8 +17,6 @@ RUN pip install --upgrade pip && \
     poetry install --no-root && \
     chmod -R +x /scripts
 
-USER appuser
-
 ENV PATH="/scripts:$PATH"
 
 EXPOSE 8000
